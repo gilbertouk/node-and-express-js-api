@@ -28,6 +28,7 @@ export default [
         "error",
         {
           endOfLine: "auto",
+          printWidth: 120,
         },
       ],
     },
