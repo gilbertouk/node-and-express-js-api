@@ -11,7 +11,8 @@
     "lint:fix": "eslint --fix",
     "prisma:generate": "prisma generate",
     "migration:create": "prisma migrate dev --create-only",
-    "migrate": "prisma migrate deploy"
+    "migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed"
   },
   "keywords": [],
   "author": "",
@@ -45,5 +46,8 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "morgan": "^1.10.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }
