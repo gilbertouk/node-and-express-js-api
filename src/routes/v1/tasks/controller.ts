@@ -1,16 +1,25 @@
 import { Request, Response } from "express";
 import EntityNotFoundError from "../../../errors/EntityNotFoundError";
+import prisma from "../../../prisma-client";
 
 export const listTasks = async (req: Request, res: Response) => {
-  throw new EntityNotFoundError({
-    message: "Entity not found",
-    statusCode: 404,
-    code: "ERR_NOT_FOUND",
-  });
-  // res.status(200).json([]);
+  const tasks = await prisma.task.findMany();
+  res.status(200).json({ tasks });
 };
 
-export const getTask = (req: Request, res: Response) => {
+export const getTask = async (req: Request, res: Response) => {
   const { id } = req.params;
-  res.status(200).json({ id, name: `Task ${id}` });
+  const task = await prisma.task.findUnique({
+    where: { id },
+  });
+
+  if (!task) {
+    throw new EntityNotFoundError({
+      message: "Task not found",
+      statusCode: 404,
+      code: "ERR_NOT_FOUND",
+    });
+  }
+
+  res.status(200).json({ task });
 };
