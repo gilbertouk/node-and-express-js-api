@@ -35,3 +35,14 @@ export const listProjectTasks = async (req: Request, res: Response) => {
   });
   res.status(200).json({ tasks });
 };
+
+export const createProject = async (req: Request, res: Response) => {
+  const project = await prisma.project.create({
+    data: {
+      user_id: req.auth?.payload.sub as string,
+      ...req.body,
+    },
+  });
+
+  res.status(201).json({ project });
+};
