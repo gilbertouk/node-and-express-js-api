@@ -1,17 +1,25 @@
+# token
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmIxZmEzMy0xNGE4LTRmNzMtOWVlOC1jYmU0NzhhMTgwYjQiLCJpYXQiOjE3NTIxNTU0MDQsImV4cCI6MTc1MjE1OTAwNCwiaXNzIjoidGFzay1tYW5hZ2VyLWFwcCJ9.0oK67_RFSUxRRnEtBuSXzaJpDKUTeOMjiTqoj0a71Xk
+
 ### health check
 GET http://localhost:3000/health HTTP/1.1
 
 ### GET tasks
 GET http://localhost:3000/v1/tasks HTTP/1.1
+Authorization: Bearer {{TOKEN}}
 
 ### GET task by ID
-GET http://localhost:3000/v1/tasks/1 HTTP/1.1
+GET http://localhost:3000/v1/tasks/cmcxf63so0002vk4cl7jb8pz4 HTTP/1.1
+Authorization: Bearer {{TOKEN}}
 
 ### GET projects
 GET http://localhost:3000/v1/projects HTTP/1.1
+Authorization: Bearer {{TOKEN}}
 
 ### GET project by ID
-GET http://localhost:3000/v1/projects/1 HTTP/1.1
+GET http://localhost:3000/v1/projects/cmcxf63rz0000vk4cea0lhenj HTTP/1.1
+Authorization: Bearer {{TOKEN}}
 
 ### GET project's tasks
-GET http://localhost:3000/v1/projects/1/tasks HTTP/1.1
+GET http://localhost:3000/v1/projects/cmcxf63rz0000vk4cea0lhenj/tasks HTTP/1.1
+Authorization: Bearer {{TOKEN}}
