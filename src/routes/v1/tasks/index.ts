@@ -1,8 +1,8 @@
 import express, { Router } from "express";
 import { listTasks, getTask, createTask, updateTask } from "./controller";
-import authenticateUser from "../../../middleware/authenticate-user";
-import validateRequest from "../../../middleware/validate-request";
-import { createTaskSchema, updateTaskSchema } from "../../../data/request-schemas";
+import authenticateUser from "@/middleware/authenticate-user";
+import validateRequest from "@/middleware/validate-request";
+import { createTaskSchema, updateTaskSchema } from "@/data/request-schemas";
 
 const tasks: Router = express.Router();
 
