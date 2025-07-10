@@ -4,13 +4,14 @@ import morgan from "morgan";
 import config from "./config";
 import v1 from "./routes/v1";
 import errorHandler from "./middleware/error-handler";
+import morganMiddleware from "./middleware/morgan-middleware";
 
 export const createServer = () => {
   const app = express();
 
   app
     .disable("x-powered-by")
-    .use(morgan("dev"))
+    .use(morganMiddleware)
     .use(express.urlencoded({ extended: true }))
     .use(express.json())
     .use(cors());
