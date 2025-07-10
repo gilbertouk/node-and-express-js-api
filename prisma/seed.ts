@@ -7,11 +7,7 @@ function capitalize(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-const userIds = [
-  "f2b1fa33-14a8-4f73-9ee8-cbe478a180b4",
-  "daf871c9-c79e-4de8-be17-b13c56516c99",
-  "351568b3-1cec-499e-9268-4339fd81f751",
-];
+const userIds = ["google-oauth2|113606525363804811878"];
 
 async function main() {
   for (const userId of userIds) {
