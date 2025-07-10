@@ -1,5 +1,5 @@
 # token
-@TOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Imwtb1IxZFpzbmlldEJITmEwcGhsdiJ9.eyJpc3MiOiJodHRwczovL2Rldi1yNHJqMTI3eTN3dGVoMHBlLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExMzYwNjUyNTM2MzgwNDgxMTg3OCIsImF1ZCI6WyJ0YXNrLW1hbmFnZXItYXBpIiwiaHR0cHM6Ly9kZXYtcjRyajEyN3kzd3RlaDBwZS51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzUyMTU2OTY3LCJleHAiOjE3NTIxNjQxNjcsInNjb3BlIjoib3BlbmlkIGVtYWlsIiwiYXpwIjoiamQwekNoRDd2dzhMMGN5TzA5cVVZbmpCNHVseEZndEEifQ.BqeAohhx3seorsCcWp7SnujAwShGcEl4IPZ2DpKwYRHtllI0irVr4AR9v2UYiDRGcD7mIdbpEZELEbI_uvlpl1mUGc3bYOXspPi8vNpEvm43W3q8pK2TWcd993A2kTgtUb6T0ct2HYxneruQtc-VTXf3IQ8wPsDKRO1t_PH6NJvOcW53veUQbAtwRAq_1Jvia1T27HrRDK2UfZXn2xQU2z5BabCdK1hTtNVdkKuzP4LwsFyuopWkJWRi1dTvwZC3NwEJyHii8HH4i23kwgodV0MDMoUXD5McGs23m6eZ6F-2d5ua7UmOWOt5FlY8Ejv72p2BpySA6-5VS_5oALvcRw
+@TOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Imwtb1IxZFpzbmlldEJITmEwcGhsdiJ9.eyJpc3MiOiJodHRwczovL2Rldi1yNHJqMTI3eTN3dGVoMHBlLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExMzYwNjUyNTM2MzgwNDgxMTg3OCIsImF1ZCI6WyJ0YXNrLW1hbmFnZXItYXBpIiwiaHR0cHM6Ly9kZXYtcjRyajEyN3kzd3RlaDBwZS51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzUyMTY1MTk2LCJleHAiOjE3NTIxNzIzOTYsInNjb3BlIjoib3BlbmlkIGVtYWlsIiwiYXpwIjoiamQwekNoRDd2dzhMMGN5TzA5cVVZbmpCNHVseEZndEEifQ.IsL1PB0vvq-AjAeWVkgqahN8urBU2IP0zuWGMSC-QPSXzbUekCxQxmDCrUnBrZ3TKVwjPjvqAi108Nm9UbyoMf3Fbk7KNMJMBQXOAZcw4wEAOJuG0PylP03MbwPE2pJfbjvXYwYuDaSa0W0z-78YZ3fI74rYD93-XPVA0MpcwtIgWDjWYWTVjZ-AQp6W8ATTzdlk3J-d8_sUJrBDAdxzc8Q7tGSNsBoQ0OUbs-qqivKMPDuz8_eHFsZmR-ZFBGkotX5vVsrxJ-qQ5wwwS_yjLTXnxGozo6bKPLDHub1UVQ0yKwUPBd1e0jm4iCs5Tf72yPA5bksppviKvXObDFbURQ
 
 ### health check
 GET http://localhost:3000/health HTTP/1.1
@@ -8,6 +8,25 @@ GET http://localhost:3000/health HTTP/1.1
 GET http://localhost:3000/v1/tasks HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
+### POST task
+POST http://localhost:3000/v1/tasks HTTP/1.1
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "My first task",
+  "due_date": "2025-10-10"
+}
+
+### PUT task
+PUT http://localhost:3000/v1/tasks/cmcxm7ax40001vk82r3h9xpdc HTTP/1.1
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "project_id": "cmcxheczy0000vkkmqrqysta0"
+}
+
 ### GET task by ID
 GET http://localhost:3000/v1/tasks/cmcxhed1a0002vkkmgt9pbfft HTTP/1.1
 Authorization: Bearer {{TOKEN}}
@@ -15,6 +34,16 @@ Authorization: Bearer {{TOKEN}}
 ### GET projects
 GET http://localhost:3000/v1/projects HTTP/1.1
 Authorization: Bearer {{TOKEN}}
+
+### POST project
+POST http://localhost:3000/v1/projects HTTP/1.1
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Project 2",
+  "description": "This is a test project"
+}
 
 ### GET project by ID
 GET http://localhost:3000/v1/projects/cmcxheczy0000vkkmqrqysta0 HTTP/1.1
