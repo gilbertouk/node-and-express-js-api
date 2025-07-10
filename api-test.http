@@ -1,5 +1,5 @@
 # token
-@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmIxZmEzMy0xNGE4LTRmNzMtOWVlOC1jYmU0NzhhMTgwYjQiLCJpYXQiOjE3NTIxNTU0MDQsImV4cCI6MTc1MjE1OTAwNCwiaXNzIjoidGFzay1tYW5hZ2VyLWFwcCJ9.0oK67_RFSUxRRnEtBuSXzaJpDKUTeOMjiTqoj0a71Xk
+@TOKEN = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Imwtb1IxZFpzbmlldEJITmEwcGhsdiJ9.eyJpc3MiOiJodHRwczovL2Rldi1yNHJqMTI3eTN3dGVoMHBlLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExMzYwNjUyNTM2MzgwNDgxMTg3OCIsImF1ZCI6WyJ0YXNrLW1hbmFnZXItYXBpIiwiaHR0cHM6Ly9kZXYtcjRyajEyN3kzd3RlaDBwZS51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzUyMTU2OTY3LCJleHAiOjE3NTIxNjQxNjcsInNjb3BlIjoib3BlbmlkIGVtYWlsIiwiYXpwIjoiamQwekNoRDd2dzhMMGN5TzA5cVVZbmpCNHVseEZndEEifQ.BqeAohhx3seorsCcWp7SnujAwShGcEl4IPZ2DpKwYRHtllI0irVr4AR9v2UYiDRGcD7mIdbpEZELEbI_uvlpl1mUGc3bYOXspPi8vNpEvm43W3q8pK2TWcd993A2kTgtUb6T0ct2HYxneruQtc-VTXf3IQ8wPsDKRO1t_PH6NJvOcW53veUQbAtwRAq_1Jvia1T27HrRDK2UfZXn2xQU2z5BabCdK1hTtNVdkKuzP4LwsFyuopWkJWRi1dTvwZC3NwEJyHii8HH4i23kwgodV0MDMoUXD5McGs23m6eZ6F-2d5ua7UmOWOt5FlY8Ejv72p2BpySA6-5VS_5oALvcRw
 
 ### health check
 GET http://localhost:3000/health HTTP/1.1
@@ -9,7 +9,7 @@ GET http://localhost:3000/v1/tasks HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### GET task by ID
-GET http://localhost:3000/v1/tasks/cmcxf63so0002vk4cl7jb8pz4 HTTP/1.1
+GET http://localhost:3000/v1/tasks/cmcxhed1a0002vkkmgt9pbfft HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### GET projects
@@ -17,9 +17,9 @@ GET http://localhost:3000/v1/projects HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### GET project by ID
-GET http://localhost:3000/v1/projects/cmcxf63rz0000vk4cea0lhenj HTTP/1.1
+GET http://localhost:3000/v1/projects/cmcxheczy0000vkkmqrqysta0 HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### GET project's tasks
-GET http://localhost:3000/v1/projects/cmcxf63rz0000vk4cea0lhenj/tasks HTTP/1.1
+GET http://localhost:3000/v1/projects/cmcxheczy0000vkkmqrqysta0/tasks HTTP/1.1
 Authorization: Bearer {{TOKEN}}
