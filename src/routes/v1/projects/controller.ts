@@ -3,14 +3,18 @@ import prisma from "../../../prisma-client";
 import EntityNotFoundError from "../../../errors/EntityNotFoundError";
 
 export const listProjects = async (req: Request, res: Response) => {
-  const projects = await prisma.project.findMany();
+  const projects = await prisma.project.findMany({
+    where: {
+      user_id: req.auth?.payload.sub,
+    },
+  });
   res.status(200).json({ projects });
 };
 
 export const getProject = async (req: Request, res: Response) => {
   const { id } = req.params;
   const project = await prisma.project.findUnique({
-    where: { id },
+    where: { id, user_id: req.auth?.payload.sub },
   });
 
   if (!project) {
@@ -27,7 +31,7 @@ export const getProject = async (req: Request, res: Response) => {
 export const listProjectTasks = async (req: Request, res: Response) => {
   const { id } = req.params;
   const tasks = await prisma.task.findMany({
-    where: { project_id: id },
+    where: { project_id: id, user_id: req.auth?.payload.sub },
   });
   res.status(200).json({ tasks });
 };
