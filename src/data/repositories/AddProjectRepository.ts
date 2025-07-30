@@ -1,7 +1,7 @@
 import EntityNotFoundError from "@/errors/EntityNotFoundError";
 import BaseRepository, { Constructor } from "./BaseRepository";
 import { Prisma } from "@prisma/client";
-import { IProject, IProjectQueryParameters, IProjectRepository } from "./repository";
+import { IProject, IProjectQueryParameters, IProjectQueryResult, IProjectRepository } from "./repository";
 
 type PrismaProject = Prisma.ProjectGetPayload<{}>;
 
@@ -17,16 +17,23 @@ export function AddProjectRepository<TBase extends Constructor<BaseRepository>>(
       };
     }
 
-    async listProjects(query: IProjectQueryParameters, userId?: string): Promise<IProject[]> {
-      const projects = await this.client.project.findMany({
-        where: {
-          user_id: userId,
-        },
-        take: query.limit || this.defaultLimit,
-        skip: query.offset || this.defaultOffset,
-      });
+    async listProjects(query: IProjectQueryParameters, userId?: string): Promise<IProjectQueryResult> {
+      const where = {
+        user_id: userId,
+      };
+      const [projects, count] = await this.client.$transaction([
+        this.client.project.findMany({
+          where,
+          take: query.limit || this.defaultLimit,
+          skip: query.offset || this.defaultOffset,
+        }),
+        this.client.project.count({ where }),
+      ]);
 
-      return projects.map((project) => this.mapProject(project));
+      return {
+        projects: projects.map((project) => this.mapProject(project)),
+        totalCount: count,
+      };
     }
 
     async getProject(id: string, userId?: string): Promise<IProject> {
