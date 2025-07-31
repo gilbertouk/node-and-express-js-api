@@ -4,7 +4,7 @@
   "description": "This api was build following this video: [Video Link](https://www.youtube.com/watch?v=yD7X1qJA5nA)",
   "main": "index.js",
   "scripts": {
-    "dev": "dotenv -- tsc-watch --onsuccess \"node dist/index.js\"",
+    "dev": "dotenv -- tsc-watch --onsuccess \"node --enable-source-maps dist/index.js\"",
     "build": "tsc",
     "start": "dotenv -- node dist/index.js",
     "test": "jest",
