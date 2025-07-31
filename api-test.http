@@ -1,5 +1,5 @@
 # token
-@TOKEN = ""
+@TOKEN = 
 
 ### health check
 GET http://localhost:3000/health HTTP/1.1
@@ -14,8 +14,7 @@ Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
 {
-  "name": "My first task",
-  "due_date": "2025-10-10"
+  "name": "Implement Strategy Pattern"
 }
 
 ### PUT task
