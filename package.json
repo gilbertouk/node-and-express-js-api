@@ -9,6 +9,7 @@
     "start": "dotenv -- node dist/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prisma:generate": "prisma generate",
