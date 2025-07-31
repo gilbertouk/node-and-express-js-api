@@ -5,7 +5,7 @@
 GET http://localhost:3000/health HTTP/1.1
 
 ### GET tasks
-GET http://localhost:3000/v1/tasks HTTP/1.1
+GET http://localhost:3000/v1/tasks?perPage=10 HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### POST task
@@ -14,20 +14,25 @@ Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
 {
-  "name": "Implement Strategy Pattern"
+  "name": "New Task 2",
+  "due_date": "2025-08-01"  
 }
 
 ### PUT task
-PUT http://localhost:3000/v1/tasks/cmcxm7ax40001vk82r3h9xpdc HTTP/1.1
+PUT http://localhost:3000/v1/tasks/cmdr9xtgz0000vkvsr41sbdt0 HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 Content-Type: application/json
 
 {
-  "project_id": "cmcxheczy0000vkkmqrqysta0"
+  "due_date": "2026-08-01"
 }
 
+### PATCH task
+PATCH http://localhost:3000/v1/tasks/cmdr9xtgz0000vkvsr41sbdt0/complete HTTP/1.1
+Authorization: Bearer {{TOKEN}}
+
 ### GET task by ID
-GET http://localhost:3000/v1/tasks/cmcxhed1a0002vkkmgt9pbfft HTTP/1.1
+GET http://localhost:3000/v1/tasks/cmdr9unvj0000vkwc9vfx8l0j HTTP/1.1
 Authorization: Bearer {{TOKEN}}
 
 ### GET projects
