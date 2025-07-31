@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { repository } from "@/data/repositories";
 import { getPaginationParameters, parseTaskQueryParameters } from "@/utils";
+import { mailer } from "@/services/mailer";
+import { CreateTaskUseCase } from "@/use-cases/CreateTaskUseCase";
 
 export const listTasks = async (req: Request, res: Response) => {
   // logger.debug("Requesting tasks");
@@ -27,7 +29,10 @@ export const getTask = async (req: Request, res: Response) => {
 };
 
 export const createTask = async (req: Request, res: Response) => {
-  const task = await repository.createTask(req.body, req.auth?.payload.sub);
+  // const task = await repository.createTask(req.body, req.auth?.payload.sub);
+  const createTaskUseCaseInstance = new CreateTaskUseCase(req, mailer);
+  const task = await createTaskUseCaseInstance.execute();
+
   res.status(201).json({ task });
 };
 
