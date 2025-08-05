@@ -25,19 +25,22 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console()],
 });
 
-const fileRotateTransport = new DailyRotateFile({
-  filename: "logs/application-%DATE%.log",
-  datePattern: "YYYY-MM-DD",
-  zippedArchive: true,
-  maxSize: "20m",
-  maxFiles: "14d",
-  format: winston.format.combine(
-    winston.format.errors({ stack: true }),
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-});
-
-logger.add(fileRotateTransport);
+// Commented out file rotation transport for now because it requires additional setup when using Docker
+// Uncomment and configure if needed in the future
+//
+// const fileRotateTransport = new DailyRotateFile({
+//   filename: "logs/application-%DATE%.log",
+//   datePattern: "YYYY-MM-DD",
+//   zippedArchive: true,
+//   maxSize: "20m",
+//   maxFiles: "14d",
+//   format: winston.format.combine(
+//     winston.format.errors({ stack: true }),
+//     winston.format.timestamp(),
+//     winston.format.json()
+//   ),
+// });
+//
+// logger.add(fileRotateTransport);
 
 export default logger;
