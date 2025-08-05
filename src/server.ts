@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import morgan from "morgan";
 import config from "./config";
 import v1 from "./routes/v1";
 import errorHandler from "./middleware/error-handler";
